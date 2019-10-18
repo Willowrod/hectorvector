@@ -15,7 +15,7 @@
 12        android:allowBackup="true"
 12-->/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/src/main/AndroidManifest.xml:7:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.1.0] /Users/mikehall/.gradle/caches/transforms-2/files-2.1/e79878761ceda7cd7fa53c34804b0578/core-1.1.0/AndroidManifest.xml:24:18-86
+13-->[androidx.core:core:1.1.0] /Users/mikehall/.gradle/caches/transforms-2/files-2.1/969f56928fce6fdd8f3190d02717442a/core-1.1.0/AndroidManifest.xml:24:18-86
 14        android:debuggable="true"
 15        android:icon="@mipmap/ic_launcher"
 15-->/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/src/main/AndroidManifest.xml:8:9-43
@@ -36,8 +36,8 @@
 23-->/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/src/main/AndroidManifest.xml:14:13-45
 24            android:screenOrientation="landscape"
 24-->/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/src/main/AndroidManifest.xml:16:13-50
-25            android:theme="@style/Theme.AppCompat.Light" >
-25-->/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/src/main/AndroidManifest.xml:15:13-57
+25            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+25-->/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/src/main/AndroidManifest.xml:15:13-69
 26            <intent-filter>
 26-->/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/src/main/AndroidManifest.xml:18:13-22:29
 27                <action android:name="android.intent.action.MAIN" />
