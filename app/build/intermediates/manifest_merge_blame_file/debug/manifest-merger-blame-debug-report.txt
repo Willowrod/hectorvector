@@ -15,7 +15,7 @@
 12        android:allowBackup="true"
 12-->/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/src/main/AndroidManifest.xml:7:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.1.0] /Users/mikehall/.gradle/caches/transforms-2/files-2.1/969f56928fce6fdd8f3190d02717442a/core-1.1.0/AndroidManifest.xml:24:18-86
+13-->[androidx.core:core:1.1.0] /Users/mikehall/.gradle/caches/transforms-2/files-2.1/1d36cbf3ca23d062a168d1f5de48103b/core-1.1.0/AndroidManifest.xml:24:18-86
 14        android:debuggable="true"
 15        android:icon="@mipmap/ic_launcher"
 15-->/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/src/main/AndroidManifest.xml:8:9-43

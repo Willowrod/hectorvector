@@ -12,6 +12,7 @@ open class Vector {
     var vLength: ArrayList<Int> = ArrayList()
     var show = true
     var gap = 0.06f
+    open var scale = 1.0f
     open var speed = 500L
     var currentTime = Date().time
 
@@ -46,6 +47,7 @@ open class Vector {
 
     open fun draw(gl: GL10) {
         setColour(gl)
+        gl.glScalef(scale,scale,1.0f)
         gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertexBuffer[frame])
         gl.glEnableClientState(GL10.GL_VERTEX_ARRAY)
         gl.glDrawArrays(GL10.GL_LINES, 0, vLength[frame])

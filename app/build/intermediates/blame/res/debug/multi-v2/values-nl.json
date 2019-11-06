@@ -4,7 +4,7 @@
             "outputFile": "/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-nl/values-nl.xml",
             "map": [
                 {
-                    "source": "/Users/mikehall/.gradle/caches/transforms-2/files-2.1/64645178d665b44f3221cf81b3077843/appcompat-1.1.0/res/values-nl/values-nl.xml",
+                    "source": "/Users/mikehall/.gradle/caches/transforms-2/files-2.1/94a1c07c4e77e75375d2aaff1dbb5ec5/appcompat-1.1.0/res/values-nl/values-nl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/mikehall/.gradle/caches/transforms-2/files-2.1/969f56928fce6fdd8f3190d02717442a/core-1.1.0/res/values-nl/values-nl.xml",
+                    "source": "/Users/mikehall/.gradle/caches/transforms-2/files-2.1/1d36cbf3ca23d062a168d1f5de48103b/core-1.1.0/res/values-nl/values-nl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

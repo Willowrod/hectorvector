@@ -13,6 +13,8 @@ object Engine: Shortcuts {
     val mum = MotherShip()
     val sven = Sven()
     var logo = GeminusPorta()
+    var willowRod = WillowRod()
+    var sizer = Sizer()
 
     var state = GameStates.Title
 
