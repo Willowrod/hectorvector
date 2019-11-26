@@ -24,7 +24,13 @@ display.change(width,height)
             val aspect = height.toFloat() / width.toFloat()
             surface.glMatrixMode(GL_PROJECTION)
             surface.glLoadIdentity()
-            surface.glOrthof(0.0f,1.0f,0.0f,aspect,-1.0f,1.0f)
+            //surface.glOrthof(0.0f,1.0f,0.0f,aspect,-1.0f,1.0f)
+            if (aspect <= 0.6f){
+                val xLength = ((0.6f / aspect) - 1.0f) / 2.0f //((width.toFloat() / height.toFloat()) - width) / 2.0f
+                surface.glOrthof(-xLength, xLength + 1.0f, 0.0f, 0.6f, -1.0f, 1.0f)
+            } else {
+                surface.glOrthof(0.0f, 1.0f, 0.0f, aspect, -1.0f, 1.0f)
+            }
             surface.glMatrixMode(GL_MODELVIEW)
             surface.glLoadIdentity()
             surface.glEnableClientState(GL_VERTEX_ARRAY)

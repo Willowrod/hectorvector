@@ -97,7 +97,7 @@ class GeminusPorta: Vector() {
     )
 
     init {
-        scale = 0.5f
+        scale = 0.6f
         addFrame(frame0)
     }
 }

@@ -36,9 +36,19 @@ open class Vector {
         }
     }
 
-    fun render(gl: GL10) {
+    open fun render(gl: GL10) {
         draw(gl)
-       // gl.glTranslatef(gap, 0.0f, 0.0f)
+    }
+
+    open fun renderFrame(gl: GL10, frameToRender: Int) {
+        if (frameToRender < vertexBuffer.size && frameToRender >= 0) {
+            frame = frameToRender
+        }
+        draw(gl)
+    }
+
+    open fun renderString(gl: GL10, stringToRender: String, aligned: Int = 1) {
+
     }
 
     fun setColour(gl: GL10){

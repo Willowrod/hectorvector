@@ -1,4 +1,4 @@
-#Wed Nov 06 08:49:32 GMT 2019
+#Tue Nov 26 09:29:50 GMT 2019
 base.0=/Users/mikehall/Src/Willowrod/GeminusPorta/hectorvector/app/build/intermediates/dex/debug/mergeExtDexDebug/out/classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex
