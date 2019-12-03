@@ -47,8 +47,17 @@ open class Vector {
         draw(gl)
     }
 
-    open fun renderString(gl: GL10, stringToRender: String, aligned: Int = 1) {
+    open fun renderString(gl: GL10, stringToRender: String, aligned: Int = 1, newScale: Float = 1.0f) {
 
+    }
+
+    open fun renderString(gl: GL10, stringToRender: String, x: Float, y: Float, aligned: Int = 1, newScale: Float = 1.0f) {
+        gl.glPushMatrix()
+        gl.glLoadIdentity()
+        gl.glTranslatef(x,y,0.0f)
+       // scale = newScale
+        renderString(gl,stringToRender, aligned, newScale)
+        gl.glPopMatrix()
     }
 
     fun setColour(gl: GL10){

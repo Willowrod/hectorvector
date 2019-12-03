@@ -1680,6 +1680,7 @@ class Font : Vector() {
     )
 
     init {
+        scale = 1.0f
         addFrame(frameA)
         addFrame(frameB)
         addFrame(frameC)
@@ -1769,7 +1770,10 @@ class Font : Vector() {
         draw(gl)
     }
 
-    override fun renderString(gl: GL10, stringToRender: String, aligned: Int) {
+    override fun renderString(gl: GL10, stringToRender: String, aligned: Int, newScale: Float) {
+
+        scale = newScale
+        gl.glScalef(scale,scale,1.0f)
         if (aligned == 1) {
             gl.glTranslatef((-0.025f * stringToRender.length) / 2.0f, 0.0f, 0.0f)
         } else if (aligned == 2) {
@@ -1855,5 +1859,13 @@ class Font : Vector() {
         gl.glTranslatef(0.025f, 0.0f, 0.0f)
     }
 
+
+    override fun draw(gl: GL10) {
+        setColour(gl)
+        gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertexBuffer[frame])
+        gl.glEnableClientState(GL10.GL_VERTEX_ARRAY)
+        gl.glDrawArrays(GL10.GL_LINES, 0, vLength[frame])
+        gl.glDisableClientState(GL10.GL_VERTEX_ARRAY)
+    }
 
 }
