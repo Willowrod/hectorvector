@@ -3,7 +3,7 @@ package com.geminusporta.hectorvector.vectors
 class Test: Vector() {
 
     var multiplier = 1
-    override var speed = 100L
+    override var frameSpeed = 100L
 
     var frame1: FloatArray = floatArrayOf(
         -0.001f, -0.001f,
@@ -90,7 +90,7 @@ class Test: Vector() {
         addFrame(frame7)
     }
 
-    override fun update() {
+    override fun update(isReversed: Boolean) {
         frame += multiplier
         if (frame >= vertexBuffer.size || frame < 0) {
             multiplier *= -1

@@ -2,10 +2,10 @@ package com.geminusporta.hectorvector.vectors
 
 import javax.microedition.khronos.opengles.GL10
 
-class MotherShip: Vector() {
+class MotherShip(x: Float = 0.5f, y: Float = 0.3f): Vector(x,y) {
 
     override var frame = 1
-    override var speed = 50L
+    override var frameSpeed = 50L
 
     var body = floatArrayOf(
         -0.015f, 0.02f, 0.015f, 0.02f,
@@ -237,7 +237,7 @@ class MotherShip: Vector() {
         0.02f, -0.005f, 0.02f, 0.005f
     )
 
-    override fun update() {
+    override fun update(isReversed: Boolean) {
 
         frame++
         if (frame >= vertexBuffer.size) {

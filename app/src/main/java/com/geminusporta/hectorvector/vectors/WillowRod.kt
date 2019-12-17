@@ -1,6 +1,6 @@
 package com.geminusporta.hectorvector.vectors
 
-class WillowRod: Vector() {
+class WillowRod(x: Float = 0.5f, y: Float = 0.3f): Vector(x,y) {
 
     var frame0 = floatArrayOf(
     0.20f,0.90f,0.10f,0.90f,

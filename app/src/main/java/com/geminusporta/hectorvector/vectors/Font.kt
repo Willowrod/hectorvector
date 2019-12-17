@@ -1755,7 +1755,7 @@ class Font : Vector() {
         addFrame(frameBAR)
     }
 
-    override fun update() {
+    override fun update(isReversed: Boolean) {
 
     }
 

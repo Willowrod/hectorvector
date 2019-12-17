@@ -1,6 +1,6 @@
 package com.geminusporta.hectorvector.vectors
 
-class GeminusPorta: Vector() {
+class GeminusPorta(x: Float = 0.5f, y: Float = 0.3f): Vector(x,y) {
     var frame0 = floatArrayOf(
         0f, 0.35f,
         -0.5f, 0.35f,

@@ -13,8 +13,8 @@ object Engine: Shortcuts, TouchDelegate {
     val bob = Bob()
     val mum = MotherShip()
     val font = Font()
-    var logo = GeminusPorta()
-    var willowRod = WillowRod()
+    var logo = GeminusPorta(0.5f, 0.34f)
+    var willowRod = WillowRod(0.5f, 0.34f)
     var sizer = Sizer()
     var box = BoundingBox()
 
@@ -30,10 +30,9 @@ object Engine: Shortcuts, TouchDelegate {
 
     var triggerTime = System.currentTimeMillis()
 
+    var shouldReverseInvaders = false
+
     init {
-        vaders.add(test)
-        vaders.add(bob)
-        vaders.add(mum)
         triggerTime = System.currentTimeMillis() + 4000
     }
 
@@ -44,16 +43,16 @@ object Engine: Shortcuts, TouchDelegate {
         when (state){
             GameStates.Title -> showTitle(surface)
             GameStates.Menu -> showMenu(surface)
-            GameStates.Game -> showTitle(surface)
-            GameStates.GameOver -> showTitle(surface)
+            GameStates.Game -> showGame(surface)
+            GameStates.GameOver -> showGame(surface)
             GameStates.HighScoreEntry -> showTitle(surface)
             GameStates.HighScoreTable -> showTitle(surface)
         }
     }
 
     private fun showBoundingBox(surface: GL10){
-        surface.glLoadIdentity()
-        surface.glTranslatef(0.5f, 0.3f, 0.0f)
+       // surface.glLoadIdentity()
+       // surface.glTranslatef(0.5f, 0.3f, 0.0f)
         box.render(surface)
     }
 
@@ -108,13 +107,42 @@ object Engine: Shortcuts, TouchDelegate {
         return false
     }
 
-
     private fun showMenu(surface: GL10) {
         font.renderString(surface, "Hector Vector - Earth Protector", 0.50f, 0.54f)
         font.renderString(surface, "Touch screen to play", 0.50f, 0.03f)
+        if (eitherFingerLifted()){
+            setGameToPlay()
+        }
     }
 
+    private fun setGameToPlay() {
+vaders = ArrayList()
+        for (a in 1..11) {
+            vaders.add(Alfie(0.05f * a, 0.46f))
+        }
+        for (a in 1..11) {
+            vaders.add(Bob(0.05f * a, 0.4f))
+        }
+//        vaders.add(GeminusPorta(0.5f, 0.4f))
+        state = GameStates.Game
+    }
 
+    private fun showGame(surface: GL10){
+        surface.glLoadIdentity()
+        var reverse = false
+        if (shouldReverseInvaders){
+            for (vader in vaders){
+                vader.reverse()
+                //vader.render(surface)
+            }
+            shouldReverseInvaders = false
+        }
+        log.Log("Invaders reversed = $reverse")
+for (vader in vaders){
+    vader.runFrame(reverse)
+    vader.render(surface)
+}
+    }
 
     override fun touchDown(x: Int, y: Int, touch: Int) {
         if (touch < 2) {

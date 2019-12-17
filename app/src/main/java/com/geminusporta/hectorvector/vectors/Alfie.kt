@@ -1,6 +1,6 @@
 package com.geminusporta.hectorvector.vectors
 
-class Alfie: Vector() {
+class Alfie(x: Float = 0.5f, y: Float = 0.3f): Vector(x,y) {
 
     var frame1: FloatArray = floatArrayOf(
         -0.00375f, 0.015f, 0.00375f, 0.015f,

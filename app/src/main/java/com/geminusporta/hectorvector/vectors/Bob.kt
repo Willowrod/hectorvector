@@ -1,6 +1,6 @@
 package com.geminusporta.hectorvector.vectors
 
-class Bob: Vector() {
+class Bob(x: Float = 0.5f, y: Float = 0.3f): Vector(x,y) {
     var frame1 = floatArrayOf(
         -0.015f, 0.015f, -0.01125f, 0.015f,
 

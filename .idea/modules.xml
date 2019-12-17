@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Hector Vector.iml" filepath="$PROJECT_DIR$/Hector Vector.iml" group="Hector Vector" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Hector_Vector.iml" filepath="$PROJECT_DIR$/.idea/modules/Hector_Vector.iml" group="Hector_Vector" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Hector Vector/app" />
     </modules>
   </component>

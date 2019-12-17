@@ -1,7 +1,7 @@
 package com.geminusporta.hectorvector.vectors
 
 class Sven: Vector() {
-    override var speed = 100L
+    override var frameSpeed = 100L
     var frame1: FloatArray = floatArrayOf(-0.025f, 0.15f, 0.025f, 0.15f,
 
     0.025f, 0.15f, 0.05f, 0.125f,
