@@ -3,7 +3,9 @@ package com.geminusporta.hectorvector.game
 import com.geminusporta.hectorvector.Shortcuts
 import com.geminusporta.hectorvector.constants.GameStates
 import com.geminusporta.hectorvector.interfaces.TouchDelegate
+import com.geminusporta.hectorvector.services.LoggingService
 import com.geminusporta.hectorvector.vectors.*
+import java.math.BigDecimal
 import javax.microedition.khronos.opengles.GL10
 
 object Engine: Shortcuts, TouchDelegate {
@@ -17,6 +19,7 @@ object Engine: Shortcuts, TouchDelegate {
     var willowRod = WillowRod(0.5f, 0.34f)
     var sizer = Sizer()
     var box = BoundingBox()
+    var inUpdate = false
 
     var wave = 0
 
@@ -37,6 +40,7 @@ object Engine: Shortcuts, TouchDelegate {
     }
 
     fun drawFrame(surface: GL10){
+        LoggingService.Log("Vader Main Tick")
         surface.glClear(GL10.GL_COLOR_BUFFER_BIT or GL10.GL_DEPTH_BUFFER_BIT)
         showBoundingBox(surface)
         showFPS(surface)
@@ -117,20 +121,32 @@ object Engine: Shortcuts, TouchDelegate {
 
     private fun setGameToPlay() {
 vaders = ArrayList()
+        var count = 0
         for (a in 1..11) {
-            vaders.add(Alfie(0.05f * a, 0.46f))
+            val theFloat = (BigDecimal("0.06") * BigDecimal("$a")).toFloat()
+            log.Log("Creating invader $count at X:$theFloat")
+            vaders.add(Alfie(theFloat, 0.46f, count))
+            log.Log("Creating invader ${count + 1} at X:$theFloat")
+            vaders.add(Bob(theFloat, 0.4f, count + 1))
+            count += 2
         }
-        for (a in 1..11) {
-            vaders.add(Bob(0.05f * a, 0.4f))
-        }
+//        for (a in 1..11) {
+//            val theFloat = (0.05f * a).toFloat()
+//            log.Log("Creating invader $count at X:$theFloat")
+//            vaders.add(Bob(theFloat, 0.4f, count))
+//            //vaders.add(Bob(0.05f * a, 0.4f, count))
+//            count += 1
+//        }
 //        vaders.add(GeminusPorta(0.5f, 0.4f))
         state = GameStates.Game
     }
 
     private fun showGame(surface: GL10){
         surface.glLoadIdentity()
+        LoggingService.Log("Vader Tick")
         var reverse = false
         if (shouldReverseInvaders){
+            LoggingService.Log("Vader Reverse")
             for (vader in vaders){
                 vader.reverse()
                 //vader.render(surface)
@@ -138,10 +154,14 @@ vaders = ArrayList()
             shouldReverseInvaders = false
         }
         log.Log("Invaders reversed = $reverse")
-for (vader in vaders){
-    vader.runFrame(reverse)
-    vader.render(surface)
-}
+        if (!inUpdate) {
+            inUpdate = true
+            for (vader in vaders) {
+                vader.runFrame(reverse)
+                vader.render(surface)
+            }
+            inUpdate = false
+        }
     }
 
     override fun touchDown(x: Int, y: Int, touch: Int) {

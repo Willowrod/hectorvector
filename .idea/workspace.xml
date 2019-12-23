@@ -6,12 +6,11 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Vader" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5833744d-15a8-4ac2-9d33-13e985bf5661" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules/Hector_Vector.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/models/InvaderPattern.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -21,22 +20,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.6.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Hector Vector.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/game/Engine.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/game/Engine.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Alfie.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Alfie.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Bob.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Bob.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Font.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Font.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/GeminusPorta.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/GeminusPorta.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/MotherShip.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/MotherShip.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Sven.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Sven.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Test.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Test.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Vector.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/Vector.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/WillowRod.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/geminusporta/hectorvector/vectors/WillowRod.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,7 +33,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="948AY0KFS2" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="4.7_WXGA_API_29" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

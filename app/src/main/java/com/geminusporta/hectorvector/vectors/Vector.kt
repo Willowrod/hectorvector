@@ -2,6 +2,8 @@ package com.geminusporta.hectorvector.vectors
 
 import com.geminusporta.hectorvector.game.Engine
 import com.geminusporta.hectorvector.models.InvaderPattern
+import com.geminusporta.hectorvector.services.LoggingService
+import java.math.BigDecimal
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
 import java.nio.FloatBuffer
@@ -11,7 +13,8 @@ import kotlin.collections.ArrayList
 import kotlin.math.pow
 import kotlin.math.sqrt
 
-open class Vector(x: Float = 0.5f, y: Float = 0.3f) {
+open class Vector(x: Float = 0.5f, y: Float = 0.3f, theID: Int = -1) {
+    var id: Int = -1
     open var frame: Int = 0
     var vertexBuffer: ArrayList<FloatBuffer> = ArrayList()
     var vLength: ArrayList<Int> = ArrayList()
@@ -26,7 +29,7 @@ open class Vector(x: Float = 0.5f, y: Float = 0.3f) {
     var patternFramesElapsed = 0
     var patternTimeStarted = System.currentTimeMillis()
 
-    var currentX: Float = -1.0f
+    var currentX: BigDecimal = BigDecimal("-1")
     var currentY: Float = -1.0f
 
     var destinationX: Float = -1.0f
@@ -35,18 +38,14 @@ open class Vector(x: Float = 0.5f, y: Float = 0.3f) {
     var vectorX: Float = -1.0f
     var vectorY: Float = -1.0f
 
-    open var moveSpeed = 0.02f//0.004f
+    open var moveSpeed = BigDecimal("0.02")//f//0.004f
 
     var DIRECTION = 1
 
-//    constructor(x: Float = 0.5f, y: Float = 0.3f){
-//        currentX = x
-//        currentY = y
-//    }
-
     init {
-        currentX = x
+        currentX = BigDecimal("$x")
         currentY = y
+        id = theID
     }
 
     fun runFrame(isReversed: Boolean = false){
@@ -62,20 +61,25 @@ open class Vector(x: Float = 0.5f, y: Float = 0.3f) {
     }
 
     fun reverse(){
+        LoggingService.Log("Vader pre reverse - id:$id x:$currentX y:$currentY")
         DIRECTION *= -1
-        currentY -= 0.05f
+        currentY -= BigDecimal("0.05").toFloat()
+        LoggingService.Log("Vader post reverse - id:$id x:$currentX y:$currentY")
     }
 
     open fun update(isReversed: Boolean) {
-
+val moveSpeedTrue = moveSpeed * BigDecimal("$DIRECTION")
         frame++
         if (frame >= vertexBuffer.size) {
             frame = 0
         }
-        currentX += moveSpeed * DIRECTION
-        if (currentX > 1.0f && !isReversed){
+        currentX += moveSpeedTrue
+        LoggingService.Log("Vader newPosition - id:$id x:$currentX y:$currentY")
+        if (currentX > BigDecimal("1") && DIRECTION == 1 && !isReversed){
+            LoggingService.Log("Vader triggers reverse - id:$id x:$currentX y:$currentY")
             Engine.shouldReverseInvaders = true
-        } else if (currentX < 0.0f && !isReversed){
+        } else if (currentX < BigDecimal("0") && DIRECTION == -1 && !isReversed){
+            LoggingService.Log("Vader triggers reverse - id:$id x:$currentX y:$currentY")
             Engine.shouldReverseInvaders = true
         }
     }
@@ -111,7 +115,7 @@ open class Vector(x: Float = 0.5f, y: Float = 0.3f) {
     open fun draw(gl: GL10) {
         setColour(gl)
         gl.glLoadIdentity()
-        gl.glTranslatef(currentX,currentY,0.0f)
+        gl.glTranslatef(currentX.toFloat(),currentY,0.0f)
         gl.glScalef(scale,scale,1.0f)
         gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertexBuffer[frame])
         gl.glEnableClientState(GL10.GL_VERTEX_ARRAY)
@@ -141,13 +145,13 @@ open class Vector(x: Float = 0.5f, y: Float = 0.3f) {
     }
 
     fun setUpMovement(dX: Float, dY: Float){
-        val vX = dX - currentX
+        val vX = dX - currentX.toFloat()
         val vY = dY - currentY
     destinationX = dX
         destinationY = dY
 
         val vL = sqrt(vX.pow(2) + vY.pow(2))
-        val steps: Float = vL / moveSpeed
+        val steps: Float = vL / moveSpeed.toFloat()
         vectorX = if (vX == 0.0f || steps == 0.0f){
             0.0f
         } else {
