@@ -17,6 +17,7 @@ open class Vector(x: Float = 0.5f, y: Float = 0.3f, theID: Int = -1) {
     var id: Int = -1
     open var frame: Int = 0
     var vertexBuffer: ArrayList<FloatBuffer> = ArrayList()
+    var hitBoxes: ArrayList<FloatBuffer> = ArrayList()
     var vLength: ArrayList<Int> = ArrayList()
     var show = true
     var gap = 0.06f
@@ -30,7 +31,7 @@ open class Vector(x: Float = 0.5f, y: Float = 0.3f, theID: Int = -1) {
     var patternTimeStarted = System.currentTimeMillis()
 
     var currentX: BigDecimal = BigDecimal("-1")
-    var currentY: Float = -1.0f
+    var currentY: BigDecimal = BigDecimal("-1")
 
     var destinationX: Float = -1.0f
     var destinationY: Float = -1.0f
@@ -44,30 +45,38 @@ open class Vector(x: Float = 0.5f, y: Float = 0.3f, theID: Int = -1) {
 
     init {
         currentX = BigDecimal("$x")
-        currentY = y
+        currentY = BigDecimal("$y")
         id = theID
     }
 
     fun runFrame(isReversed: Boolean = false){
-        if (vertexBuffer.size > 1) {
-            val time = Date().time
-            if (time > currentTime + frameSpeed) {
-                currentTime = time
-                update(isReversed)
-            }
-        } else {
-            update(isReversed)
-        }
+        Engine.log.Log("Running Frame for $id")
+//        if (vertexBuffer.size > 1) {
+//            val time = Date().time
+//            if (time > currentTime + frameSpeed) {
+//                currentTime = time
+//                update(isReversed)
+//            }
+//        } else {
+//            update(isReversed)
+//        }
+        update(isReversed)
     }
 
     fun reverse(){
         LoggingService.Log("Vader pre reverse - id:$id x:$currentX y:$currentY")
         DIRECTION *= -1
-        currentY -= BigDecimal("0.05").toFloat()
+        currentY -= BigDecimal("0.04")
+        frame++
+        if (frame >= vertexBuffer.size) {
+            frame = 0
+        }
         LoggingService.Log("Vader post reverse - id:$id x:$currentX y:$currentY")
     }
 
+
     open fun update(isReversed: Boolean) {
+        Engine.log.Log("Update Frame for $id")
 val moveSpeedTrue = moveSpeed * BigDecimal("$DIRECTION")
         frame++
         if (frame >= vertexBuffer.size) {
@@ -75,16 +84,15 @@ val moveSpeedTrue = moveSpeed * BigDecimal("$DIRECTION")
         }
         currentX += moveSpeedTrue
         LoggingService.Log("Vader newPosition - id:$id x:$currentX y:$currentY")
-        if (currentX > BigDecimal("1") && DIRECTION == 1 && !isReversed){
-            LoggingService.Log("Vader triggers reverse - id:$id x:$currentX y:$currentY")
+        if (currentX + (BigDecimal("0.06")) > BigDecimal("1") && DIRECTION == 1 && !isReversed){
             Engine.shouldReverseInvaders = true
-        } else if (currentX < BigDecimal("0") && DIRECTION == -1 && !isReversed){
-            LoggingService.Log("Vader triggers reverse - id:$id x:$currentX y:$currentY")
+        } else if (currentX - (BigDecimal("0.06")) < BigDecimal("0") && DIRECTION == -1 && !isReversed){
             Engine.shouldReverseInvaders = true
         }
     }
 
     open fun render(gl: GL10) {
+        Engine.log.Log("Rendering $id")
         draw(gl)
     }
 
@@ -113,9 +121,10 @@ val moveSpeedTrue = moveSpeed * BigDecimal("$DIRECTION")
     }
 
     open fun draw(gl: GL10) {
+        Engine.log.Log("Drawing $id")
         setColour(gl)
         gl.glLoadIdentity()
-        gl.glTranslatef(currentX.toFloat(),currentY,0.0f)
+        gl.glTranslatef(currentX.toFloat(),currentY.toFloat(),0.0f)
         gl.glScalef(scale,scale,1.0f)
         gl.glVertexPointer(2, GL10.GL_FLOAT, 0, vertexBuffer[frame])
         gl.glEnableClientState(GL10.GL_VERTEX_ARRAY)
@@ -146,7 +155,7 @@ val moveSpeedTrue = moveSpeed * BigDecimal("$DIRECTION")
 
     fun setUpMovement(dX: Float, dY: Float){
         val vX = dX - currentX.toFloat()
-        val vY = dY - currentY
+        val vY = dY - currentY.toFloat()
     destinationX = dX
         destinationY = dY
 

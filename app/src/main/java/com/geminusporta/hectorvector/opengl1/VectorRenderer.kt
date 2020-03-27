@@ -5,6 +5,7 @@ import android.opengl.GLSurfaceView
 import com.geminusporta.hectorvector.Shortcuts
 import com.geminusporta.hectorvector.game.Engine
 import com.geminusporta.hectorvector.services.DisplayService
+import com.geminusporta.hectorvector.services.LoggingService
 import javax.microedition.khronos.egl.EGLConfig
 import javax.microedition.khronos.opengles.GL10
 
@@ -13,6 +14,8 @@ class VectorRenderer: GLSurfaceView.Renderer, Shortcuts {
     override fun onDrawFrame(gl: GL10?) {
         count += 1
         gl?.let { surface ->
+
+            LoggingService.Log(".....New Frame.....")
             Engine.drawFrame(surface)
         }
     }

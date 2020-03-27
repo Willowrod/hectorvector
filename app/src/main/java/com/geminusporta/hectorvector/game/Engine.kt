@@ -1,15 +1,21 @@
 package com.geminusporta.hectorvector.game
 
+import android.provider.SyncStateContract.Helpers.update
 import com.geminusporta.hectorvector.Shortcuts
 import com.geminusporta.hectorvector.constants.GameStates
 import com.geminusporta.hectorvector.interfaces.TouchDelegate
 import com.geminusporta.hectorvector.services.LoggingService
 import com.geminusporta.hectorvector.vectors.*
+import com.geminusporta.hectorvector.vectors.Vector
 import java.math.BigDecimal
+import java.util.*
 import javax.microedition.khronos.opengles.GL10
+import kotlin.collections.ArrayList
 
 object Engine: Shortcuts, TouchDelegate {
 
+    var invaderTime: Long = 0
+    var invaderFrameSpeed = 100L
     var alfie = Alfie()
     val test = Test()
     val bob = Bob()
@@ -40,7 +46,6 @@ object Engine: Shortcuts, TouchDelegate {
     }
 
     fun drawFrame(surface: GL10){
-        LoggingService.Log("Vader Main Tick")
         surface.glClear(GL10.GL_COLOR_BUFFER_BIT or GL10.GL_DEPTH_BUFFER_BIT)
         showBoundingBox(surface)
         showFPS(surface)
@@ -143,24 +148,32 @@ vaders = ArrayList()
 
     private fun showGame(surface: GL10){
         surface.glLoadIdentity()
-        LoggingService.Log("Vader Tick")
-        var reverse = false
-        if (shouldReverseInvaders){
-            LoggingService.Log("Vader Reverse")
-            for (vader in vaders){
-                vader.reverse()
-                //vader.render(surface)
+runInvadersForLevel(surface)
+    }
+
+    fun runInvadersForLevel(surface: GL10){
+
+        val time = Date().time
+        if (time > invaderTime + 500L - invaderFrameSpeed) {
+            invaderTime = time
+            var reverse = false
+            if (shouldReverseInvaders){
+                for (vader in vaders){
+                    vader.reverse()
+                }
+                shouldReverseInvaders = false
+            } else if (!inUpdate) {
+                inUpdate = true
+                for (vader in vaders) {
+                    vader.runFrame(reverse)
+                    vader.render(surface)
+                }
+                inUpdate = false
             }
-            shouldReverseInvaders = false
-        }
-        log.Log("Invaders reversed = $reverse")
-        if (!inUpdate) {
-            inUpdate = true
+        } else {
             for (vader in vaders) {
-                vader.runFrame(reverse)
                 vader.render(surface)
             }
-            inUpdate = false
         }
     }
 
